@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ChevronDown, ChevronUp, Search, Shield, Clock, DollarSign } from 'lucide-react';
 
 const FAQ = () => {
@@ -252,12 +253,12 @@ const FAQ = () => {
               Can't find the answer you're looking for? Our expert team is here to help you with any questions about our cybersecurity services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
               >
                 Contact Our Experts
-              </a>
+              </Link>
               <a
                 href="tel:+17134281255"
                 className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
@@ -286,12 +287,12 @@ const FAQ = () => {
               <p className="text-gray-600 mb-4">
                 Explore our comprehensive cybersecurity and recovery services
               </p>
-              <a
-                href="/services"
+              <Link
+                to="/services"
                 className="text-cyan-600 hover:text-cyan-700 font-medium"
               >
                 View Services →
-              </a>
+              </Link>
             </div>
             
             <div className="bg-white rounded-lg p-6 shadow-md text-center">
@@ -300,12 +301,12 @@ const FAQ = () => {
               <p className="text-gray-600 mb-4">
                 Transparent pricing with no hidden fees or surprises
               </p>
-              <a
-                href="/pricing"
+              <Link
+                to="/pricing"
                 className="text-cyan-600 hover:text-cyan-700 font-medium"
               >
                 View Pricing →
-              </a>
+              </Link>
             </div>
             
             <div className="bg-white rounded-lg p-6 shadow-md text-center">

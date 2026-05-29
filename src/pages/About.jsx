@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Users, Award, Target, CheckCircle, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Shield, Award, Target, CheckCircle, Globe } from 'lucide-react';
 
 const About = () => {
   const team = [
@@ -211,12 +212,12 @@ const About = () => {
             Join hundreds of satisfied clients who trust us with their digital security needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
             >
               Get Started Today
-            </a>
+            </Link>
             <a
               href="tel:+17134281255"
               className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"

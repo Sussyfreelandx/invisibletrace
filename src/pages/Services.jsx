@@ -21,56 +21,56 @@ import {
 const Services = () => {
   const mainServices = [
     {
-      icon: <Eye className="w-12 h-12" />,
+      icon: <Eye className="w-10 h-10" />,
       title: "Phone Monitoring & Tracking",
       description: "Advanced surveillance and tracking solutions for personal and corporate security needs.",
       features: ["Real-time location tracking", "Call and message monitoring", "App usage tracking", "Stealth mode operation"],
       price: "Starting at $299"
     },
     {
-      icon: <Lock className="w-12 h-12" />,
+      icon: <Lock className="w-10 h-10" />,
       title: "iCloud Unlock & Recovery",
       description: "Professional iCloud unlocking and data recovery services with guaranteed results.",
       features: ["iCloud activation bypass", "Account recovery", "Data extraction", "Privacy protection"],
       price: "Starting at $199"
     },
     {
-      icon: <Camera className="w-12 h-12" />,
+      icon: <Camera className="w-10 h-10" />,
       title: "Data Recovery for Deleted Photos & Messages",
       description: "Recover lost photos, messages, and important data from any device or platform.",
       features: ["Photo recovery", "Message restoration", "Contact recovery", "Document retrieval"],
       price: "Starting at $149"
     },
     {
-      icon: <Search className="w-12 h-12" />,
+      icon: <Search className="w-10 h-10" />,
       title: "Hacking Forensic Investigator",
       description: "Expert forensic investigation services for legal and corporate requirements.",
       features: ["Digital evidence collection", "Cyber attack analysis", "Legal documentation", "Expert testimony"],
       price: "Starting at $499"
     },
     {
-      icon: <Bitcoin className="w-12 h-12" />,
+      icon: <Bitcoin className="w-10 h-10" />,
       title: "Bitcoin & Cryptocurrency Recovery",
       description: "Specialized recovery services for lost Bitcoin and cryptocurrency assets.",
       features: ["Wallet recovery", "Private key restoration", "Exchange recovery", "Scam investigation"],
       price: "Starting at $799"
     },
     {
-      icon: <CreditCard className="w-12 h-12" />,
+      icon: <CreditCard className="w-10 h-10" />,
       title: "Credit Card Debt Solutions",
       description: "Professional assistance with credit card debt resolution and financial recovery.",
       features: ["Debt negotiation", "Credit repair", "Financial planning", "Legal protection"],
       price: "Starting at $299"
     },
     {
-      icon: <HardDrive className="w-12 h-12" />,
+      icon: <HardDrive className="w-10 h-10" />,
       title: "Data Recovery & Restoration",
       description: "Complete data recovery services for damaged, corrupted, or lost digital information.",
       features: ["Hard drive recovery", "SSD restoration", "Cloud data recovery", "Database reconstruction"],
       price: "Starting at $199"
     },
     {
-      icon: <Phone className="w-12 h-12" />,
+      icon: <Phone className="w-10 h-10" />,
       title: "Call Tracking Services",
       description: "Advanced call tracking and monitoring solutions for security and business needs.",
       features: ["Call recording", "Number tracking", "Location identification", "Pattern analysis"],
@@ -139,10 +139,10 @@ const Services = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
               >
-                <div className="text-cyan-600 mb-6">{service.icon}</div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">{service.title}</h3>
+                <div className="text-cyan-600 mb-4">{service.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
                 
                 <ul className="space-y-2 mb-6">
@@ -156,7 +156,7 @@ const Services = () => {
                 
                 <div className="border-t pt-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-cyan-600">{service.price}</span>
+                    <span className="text-xl font-bold text-cyan-600">{service.price}</span>
                     <Link
                       to="/contact"
                       className="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center"

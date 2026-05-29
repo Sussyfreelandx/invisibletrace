@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, Eye, Lock, Search, ArrowRight, CheckCircle, Users, DollarSign } from 'lucide-react';
+import { Shield, Eye, Lock, Search, ArrowRight, CheckCircle, DollarSign, Play } from 'lucide-react';
 
 const Home = () => {
   const services = [
@@ -179,12 +179,15 @@ const Home = () => {
             <div className="relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl">
               <div className="aspect-video bg-gradient-to-br from-cyan-900 to-gray-900 flex items-center justify-center">
                 <div className="text-center">
-                  <Shield className="w-24 h-24 text-cyan-400 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold mb-2">Cybersecurity Demo Video</h3>
-                  <p className="text-gray-300 mb-6">Professional cybersecurity services demonstration</p>
-                  <button className="bg-cyan-600 hover:bg-cyan-700 px-6 py-3 rounded-lg font-semibold transition-colors">
-                    Play Video
+                  <button
+                    type="button"
+                    aria-label="Play cybersecurity demo video"
+                    className="w-20 h-20 mx-auto mb-4 rounded-full bg-cyan-600 hover:bg-cyan-700 flex items-center justify-center transition-all duration-300 transform hover:scale-105"
+                  >
+                    <Play className="w-8 h-8 text-white ml-1" />
                   </button>
+                  <h3 className="text-2xl font-bold mb-2">Cybersecurity Demo Video</h3>
+                  <p className="text-gray-300">Professional cybersecurity services demonstration</p>
                 </div>
               </div>
             </div>

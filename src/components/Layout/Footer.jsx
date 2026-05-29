@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Mail, Phone, MapPin } from 'lucide-react';
 import { FaWhatsapp, FaInstagram, FaYoutube, FaFacebook } from 'react-icons/fa';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setEmail('');
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -99,16 +109,23 @@ const Footer = () => {
           <div className="max-w-md mx-auto text-center">
             <h4 className="text-lg font-semibold mb-2">Stay Updated</h4>
             <p className="text-gray-300 mb-4">Subscribe to our newsletter for cybersecurity tips and updates</p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-cyan-400"
-              />
-              <button className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-r-lg transition-colors">
-                Subscribe
-              </button>
-            </div>
+            {subscribed ? (
+              <p className="text-cyan-400 font-medium">Thanks for subscribing!</p>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-cyan-400"
+                />
+                <button type="submit" className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-r-lg transition-colors">
+                  Subscribe
+                </button>
+              </form>
+            )}
           </div>
         </div>
 

@@ -1,81 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calendar, User, ArrowRight, Shield, Eye, Lock, Search, Bitcoin, CreditCard } from 'lucide-react';
+import { Calendar, User, ArrowRight, Search } from 'lucide-react';
+import { featuredPost, blogPosts } from '../data/blogPosts';
 
 const Blog = () => {
-  const featuredPost = {
-    title: "The Ultimate Guide to Cryptocurrency Recovery in 2024",
-    excerpt: "Learn the latest techniques and best practices for recovering lost Bitcoin and other cryptocurrencies. Our experts share insider knowledge on wallet recovery, private key restoration, and scam investigation.",
-    image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
-    author: "Marcus Johnson",
-    date: "December 15, 2024",
-    category: "Cryptocurrency Recovery",
-    readTime: "8 min read"
-  };
+  const [activeCategory, setActiveCategory] = useState('All Posts');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
-  const blogPosts = [
-    {
-      title: "Phone Monitoring: Legal Considerations and Best Practices",
-      excerpt: "Understanding the legal framework around phone monitoring and tracking services. What you need to know before implementing surveillance solutions.",
-      image: "https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=600",
-      author: "Sarah Chen",
-      date: "December 12, 2024",
-      category: "Phone Monitoring",
-      readTime: "6 min read",
-      icon: <Eye className="w-5 h-5" />
-    },
-    {
-      title: "iCloud Security: How to Protect Your Data from Breaches",
-      excerpt: "Essential security measures to protect your iCloud account and data. Learn about two-factor authentication, secure passwords, and backup strategies.",
-      image: "https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=600",
-      author: "David Rodriguez",
-      date: "December 10, 2024",
-      category: "Data Security",
-      readTime: "5 min read",
-      icon: <Lock className="w-5 h-5" />
-    },
-    {
-      title: "Digital Forensics in Corporate Investigations",
-      excerpt: "How digital forensics plays a crucial role in corporate investigations. Case studies and methodologies used by professional investigators.",
-      image: "https://images.pexels.com/photos/5380665/pexels-photo-5380665.jpeg?auto=compress&cs=tinysrgb&w=600",
-      author: "Emily Watson",
-      date: "December 8, 2024",
-      category: "Digital Forensics",
-      readTime: "7 min read",
-      icon: <Search className="w-5 h-5" />
-    },
-    {
-      title: "Credit Card Fraud: Prevention and Recovery Strategies",
-      excerpt: "Comprehensive guide to preventing credit card fraud and recovering from financial losses. Expert tips from cybersecurity professionals.",
-      image: "https://images.pexels.com/photos/5380666/pexels-photo-5380666.jpeg?auto=compress&cs=tinysrgb&w=600",
-      author: "Marcus Johnson",
-      date: "December 5, 2024",
-      category: "Financial Security",
-      readTime: "6 min read",
-      icon: <CreditCard className="w-5 h-5" />
-    },
-    {
-      title: "Data Recovery: What to Do When Files Are Deleted",
-      excerpt: "Step-by-step guide to recovering deleted photos, messages, and important files. Professional techniques and tools for data restoration.",
-      image: "https://images.pexels.com/photos/5380667/pexels-photo-5380667.jpeg?auto=compress&cs=tinysrgb&w=600",
-      author: "Sarah Chen",
-      date: "December 3, 2024",
-      category: "Data Recovery",
-      readTime: "5 min read",
-      icon: <Shield className="w-5 h-5" />
-    },
-    {
-      title: "Cybersecurity Threats in 2024: What You Need to Know",
-      excerpt: "Latest cybersecurity threats and how to protect yourself. Insights from our team of security experts on emerging risks and prevention strategies.",
-      image: "https://images.pexels.com/photos/5380668/pexels-photo-5380668.jpeg?auto=compress&cs=tinysrgb&w=600",
-      author: "David Rodriguez",
-      date: "December 1, 2024",
-      category: "Cybersecurity",
-      readTime: "8 min read",
-      icon: <Shield className="w-5 h-5" />
-    }
-  ];
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    setNewsletterSubmitted(true);
+    setNewsletterEmail('');
+  };
 
   const categories = [
     "All Posts",
@@ -87,6 +26,11 @@ const Blog = () => {
     "Data Recovery",
     "Cybersecurity"
   ];
+
+  const visiblePosts =
+    activeCategory === 'All Posts'
+      ? blogPosts
+      : blogPosts.filter((post) => post.category === activeCategory);
 
   return (
     <div className="bg-gray-50">
@@ -152,7 +96,7 @@ const Blog = () => {
                     <span className="text-gray-600">{featuredPost.author}</span>
                   </div>
                   <Link
-                    to="/blog/cryptocurrency-recovery-guide-2024"
+                    to={`/blog/${featuredPost.slug}`}
                     className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center"
                   >
                     Read Article
@@ -172,8 +116,10 @@ const Blog = () => {
             {categories.map((category, index) => (
               <button
                 key={index}
+                type="button"
+                onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                  index === 0
+                  activeCategory === category
                     ? 'bg-cyan-600 text-white'
                     : 'bg-white text-gray-600 hover:bg-cyan-50 hover:text-cyan-600'
                 }`}
@@ -196,7 +142,7 @@ const Blog = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+            {visiblePosts.map((post, index) => (
               <motion.article
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -239,7 +185,7 @@ const Blog = () => {
                       <span className="text-sm text-gray-600">{post.author}</span>
                     </div>
                     <Link
-                      to={`/blog/${post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                      to={`/blog/${post.slug}`}
                       className="text-cyan-600 hover:text-cyan-700 font-medium text-sm flex items-center"
                     >
                       Read More
@@ -250,6 +196,16 @@ const Blog = () => {
               </motion.article>
             ))}
           </div>
+
+          {visiblePosts.length === 0 && (
+            <div className="text-center py-12">
+              <Search className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles in this category yet</h3>
+              <p className="text-gray-500">
+                Try selecting a different category to explore more articles.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -261,16 +217,25 @@ const Blog = () => {
             <p className="text-xl text-cyan-100 mb-8 max-w-2xl mx-auto">
               Subscribe to our newsletter for the latest cybersecurity insights, tips, and industry updates delivered to your inbox.
             </p>
-            <div className="max-w-md mx-auto flex">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-6 py-4 rounded-l-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-300"
-              />
-              <button className="bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-r-lg font-semibold transition-colors">
-                Subscribe
-              </button>
-            </div>
+            {newsletterSubmitted ? (
+              <p className="text-lg font-semibold max-w-md mx-auto">
+                Thanks for subscribing! Check your inbox to confirm your subscription.
+              </p>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto flex">
+                <input
+                  type="email"
+                  required
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="flex-1 px-6 py-4 rounded-l-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-300"
+                />
+                <button type="submit" className="bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-r-lg font-semibold transition-colors">
+                  Subscribe
+                </button>
+              </form>
+            )}
             <p className="text-sm text-cyan-100 mt-4">
               No spam, unsubscribe at any time. We respect your privacy.
             </p>

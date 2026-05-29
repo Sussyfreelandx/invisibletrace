@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Star, Quote } from 'lucide-react';
 
 const Testimonials = () => {
@@ -254,12 +255,12 @@ const Testimonials = () => {
             Experience the same professional service and successful results that our clients worldwide have come to trust.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
             >
               Get Started Today
-            </a>
+            </Link>
             <a
               href="tel:+17134281255"
               className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
