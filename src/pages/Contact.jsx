@@ -309,7 +309,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-3 px-4 rounded-lg font-semibold text-sm text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center ${
+                    className={`w-full py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center ${
                       isSubmitting 
                         ? 'bg-gray-400 cursor-not-allowed' 
                         : 'bg-cyan-600 hover:bg-cyan-700 text-white'
@@ -323,7 +323,7 @@ const Contact = () => {
                     type="button"
                     onClick={handleWhatsAppSend}
                     disabled={isSubmitting}
-                    className="w-full py-3 px-4 rounded-lg font-semibold text-sm text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    className="w-full py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
                     Send via WhatsApp
                     <FaWhatsapp className="w-5 h-5 ml-2" />

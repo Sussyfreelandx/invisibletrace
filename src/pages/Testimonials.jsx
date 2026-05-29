@@ -35,7 +35,7 @@ const Testimonials = () => {
       location: "London, United Kingdom",
       image: "https://images.pexels.com/photos/3756681/pexels-photo-3756681.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
-      quote: "Professional phone monitoring service helped protect my teenage daughter. The discrete tracking gave me peace of mind as a concerned parent.",
+      quote: "Professional phone monitoring service helped protect my teenage daughter. The discreet tracking gave me peace of mind as a concerned parent.",
       service: "Phone Monitoring"
     },
     {

@@ -18,11 +18,16 @@ This app is configured to deploy on [Railway](https://railway.app) out of the bo
 1. Create a new Railway project from this repository.
 2. Railway builds the site with `npm run build` and serves the built `dist/`
    output with `npm run start` (`vite preview`), binding to the `PORT` Railway
-   provides. Railway hosts (`*.up.railway.app`) and custom domains are allowed.
+   provides. The start command also rebuilds first so deployments never serve a
+   stale `dist/` bundle. Railway hosts (`*.up.railway.app`) and custom domains
+   are allowed.
 3. (Optional) Add the `VITE_*` environment variables below under the service's
    **Variables** tab so the contact form delivery channels are configured. Note
    that `VITE_*` values are bundled into the client at build time, so set them
    before deploying.
+
+For local production checks without the automatic rebuild, run `npm run preview`
+after `npm run build`.
 
 ## Contact form delivery channels
 
