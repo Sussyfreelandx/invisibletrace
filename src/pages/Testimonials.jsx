@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, Play, Pause, Fingerprint } from 'lucide-react';
 
 const Testimonials = () => {
+  const [playingVideo, setPlayingVideo] = useState(null);
   const testimonials = [
     {
       name: "Michael Thompson",
@@ -187,9 +188,9 @@ const Testimonials = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: "Michael T.", service: "Bitcoin Recovery", location: "USA" },
-              { name: "Sarah J.", service: "Data Recovery", location: "Canada" },
-              { name: "James W.", service: "Digital Forensics", location: "Australia" }
+              { name: "Michael T.", service: "Bitcoin Recovery", location: "USA", quote: "They recovered what I thought was gone forever and kept me updated throughout the whole process." },
+              { name: "Sarah J.", service: "Data Recovery", location: "Canada", quote: "The team restored critical family data quickly, privately, and professionally." },
+              { name: "James W.", service: "Digital Forensics", location: "Australia", quote: "Their forensic report gave us the clarity and documentation we needed." }
             ].map((video, index) => (
               <motion.div
                 key={index}
@@ -199,18 +200,43 @@ const Testimonials = () => {
                 className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg"
               >
                 <div className="aspect-video bg-gradient-to-br from-cyan-900 to-gray-900 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <div className="w-0 h-0 border-l-8 border-l-white border-t-4 border-t-transparent border-b-4 border-b-transparent ml-1"></div>
+                  {playingVideo === index ? (
+                    <div className="relative w-full h-full overflow-hidden bg-gray-950 text-white">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.35),_transparent_45%)] animate-pulse"></div>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5">
+                        <Fingerprint className="w-10 h-10 text-cyan-300 mb-3" />
+                        <h3 className="text-lg font-semibold mb-2">{video.name}</h3>
+                        <p className="text-sm text-gray-200 italic">“{video.quote}”</p>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-semibold mb-1">{video.name}</h3>
-                    <p className="text-sm text-gray-300">{video.service}</p>
-                    <p className="text-xs text-gray-400">{video.location}</p>
-                  </div>
+                  ) : (
+                    <div className="text-center text-white">
+                      <div className="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Play className="w-7 h-7 text-white ml-1" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-1">{video.name}</h3>
+                      <p className="text-sm text-gray-300">{video.service}</p>
+                      <p className="text-xs text-gray-400">{video.location}</p>
+                    </div>
+                  )}
                 </div>
                 <div className="p-4">
-                  <button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded-lg font-medium transition-colors">
-                    Play Testimonial
+                  <button
+                    type="button"
+                    onClick={() => setPlayingVideo(playingVideo === index ? null : index)}
+                    className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded-lg font-medium transition-colors inline-flex items-center justify-center"
+                  >
+                    {playingVideo === index ? (
+                      <>
+                        <Pause className="w-4 h-4 mr-2" />
+                        Pause Testimonial
+                      </>
+                    ) : (
+                      <>
+                        <Play className="w-4 h-4 mr-2" />
+                        Play Testimonial
+                      </>
+                    )}
                   </button>
                 </div>
               </motion.div>
@@ -257,16 +283,10 @@ const Testimonials = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-white text-cyan-600 hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105"
             >
               Get Started Today
             </Link>
-            <a
-              href="tel:+17134281255"
-              className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
-            >
-              Call Now: (713) 428-1255
-            </a>
           </div>
         </div>
       </section>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Eye, Lock, Search, CreditCard, Shield } from 'lucide-react';
+import { Eye, Lock, Search, CreditCard, Database } from 'lucide-react';
 
 // Centralized blog content. Each post has a unique `slug` used to build the
 // `/blog/:slug` route and to render the full article detail page.
@@ -112,7 +112,7 @@ export const blogPosts = [
     date: 'December 3, 2024',
     category: 'Data Recovery',
     readTime: '5 min read',
-    icon: <Shield className="w-5 h-5" />,
+    icon: <Database className="w-5 h-5" />,
     content: [
       'Deleting a file rarely erases it immediately. In most cases the data remains on the storage device until it is overwritten, which is exactly why prompt action gives you the best chance of recovery.',
       'The most important rule is to stop using the affected device as soon as you notice the loss. Continued use risks overwriting the very data you are trying to recover.',
@@ -131,7 +131,7 @@ export const blogPosts = [
     date: 'December 1, 2024',
     category: 'Cybersecurity',
     readTime: '8 min read',
-    icon: <Shield className="w-5 h-5" />,
+    icon: <Database className="w-5 h-5" />,
     content: [
       'The threat landscape in 2024 is defined by increasingly sophisticated attacks that blend automation, social engineering, and artificial intelligence. Staying informed is the first line of defense.',
       'Phishing has evolved well beyond clumsy emails. Attackers now craft highly convincing messages, clone legitimate websites, and even use AI-generated voice and video to impersonate trusted contacts.',

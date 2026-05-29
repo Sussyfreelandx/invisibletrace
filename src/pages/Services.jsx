@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import { 
   Eye, 
   Smartphone, 
-  Shield, 
+  Lock, 
   Search, 
   DollarSign, 
   CreditCard, 
   HardDrive, 
   Phone,
-  Lock,
   Camera,
   MessageSquare,
   Bitcoin,
@@ -82,7 +81,7 @@ const Services = () => {
     {
       title: "NO to Blackmailing",
       description: "Comprehensive protection against digital blackmail and extortion attempts.",
-      icon: <Shield className="w-8 h-8" />
+      icon: <Lock className="w-8 h-8" />
     },
     {
       title: "Financial Recovery",
@@ -272,16 +271,11 @@ const Services = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-white text-cyan-600 hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105"
             >
               Get Free Consultation
             </Link>
-            <a
-              href="tel:+17134281255"
-              className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
-            >
-              Call Now: (713) 428-1255
-            </a>
+
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ChevronUp, Search, Shield, Clock, DollarSign } from 'lucide-react';
+import { ChevronDown, ChevronUp, Search, Lock, Clock, DollarSign } from 'lucide-react';
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState([]);
@@ -18,7 +18,7 @@ const FAQ = () => {
   const faqCategories = [
     {
       title: "General Services",
-      icon: <Shield className="w-6 h-6" />,
+      icon: <Lock className="w-6 h-6" />,
       questions: [
         {
           question: "What cybersecurity services do you offer?",
@@ -84,7 +84,7 @@ const FAQ = () => {
     },
     {
       title: "Security & Privacy",
-      icon: <Shield className="w-6 h-6" />,
+      icon: <Lock className="w-6 h-6" />,
       questions: [
         {
           question: "How do you ensure my privacy and confidentiality?",
@@ -255,16 +255,10 @@ const FAQ = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+                className="bg-white text-cyan-600 hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105"
               >
                 Contact Our Experts
               </Link>
-              <a
-                href="tel:+17134281255"
-                className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
-              >
-                Call Now: (713) 428-1255
-              </a>
             </div>
           </div>
         </div>
@@ -282,7 +276,7 @@ const FAQ = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6 shadow-md text-center">
-              <Shield className="w-12 h-12 text-cyan-600 mx-auto mb-4" />
+              <Lock className="w-12 h-12 text-cyan-600 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Our Services</h3>
               <p className="text-gray-600 mb-4">
                 Explore our comprehensive cybersecurity and recovery services
@@ -315,12 +309,12 @@ const FAQ = () => {
               <p className="text-gray-600 mb-4">
                 24/7 emergency response for critical cybersecurity situations
               </p>
-              <a
-                href="tel:+17134281255"
+              <Link
+                to="/contact"
                 className="text-cyan-600 hover:text-cyan-700 font-medium"
               >
-                Call Now →
-              </a>
+                Contact Us →
+              </Link>
             </div>
           </div>
         </div>

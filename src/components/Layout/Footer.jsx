@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Mail, Phone, MapPin } from 'lucide-react';
+import { Fingerprint, Mail, Phone, MapPin } from 'lucide-react';
 import { FaWhatsapp, FaInstagram, FaYoutube, FaFacebook } from 'react-icons/fa';
 
 const Footer = () => {
@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <div className="relative">
-                <Shield className="w-8 h-8 text-cyan-400" />
+                <Fingerprint className="w-8 h-8 text-cyan-400" />
                 <div className="absolute inset-0 bg-cyan-400 opacity-20 blur-sm rounded-full"></div>
               </div>
               <div>
@@ -96,8 +96,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-cyan-400 mt-1" />
                 <address className="text-gray-300 not-italic">
-                  6525 Marvin Brown St<br />
-                  Fort Worth, Texas 76179
+                  United States
                 </address>
               </div>
             </div>

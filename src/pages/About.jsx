@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Award, Target, CheckCircle, Globe } from 'lucide-react';
+import { Lock, Award, Target, CheckCircle, Globe } from 'lucide-react';
 
 const About = () => {
   const team = [
@@ -34,7 +34,7 @@ const About = () => {
   const achievements = [
     { icon: <Award className="w-8 h-8" />, title: "Licensed Professionals", desc: "Certified cybersecurity experts" },
     { icon: <Globe className="w-8 h-8" />, title: "Global Reach", desc: "Serving clients worldwide" },
-    { icon: <Shield className="w-8 h-8" />, title: "100% Confidential", desc: "Complete privacy guaranteed" },
+    { icon: <Lock className="w-8 h-8" />, title: "100% Confidential", desc: "Complete privacy guaranteed" },
     { icon: <Target className="w-8 h-8" />, title: "99.8% Success Rate", desc: "Proven track record" }
   ];
 
@@ -214,16 +214,10 @@ const About = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-white text-cyan-600 hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105"
             >
               Get Started Today
             </Link>
-            <a
-              href="tel:+17134281255"
-              className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
-            >
-              Call Now: (713) 428-1255
-            </a>
           </div>
         </div>
       </section>

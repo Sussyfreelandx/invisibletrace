@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, Eye, Lock, Search, ArrowRight, CheckCircle, DollarSign, Play } from 'lucide-react';
+import { Fingerprint, Eye, Lock, Search, ArrowRight, CheckCircle, DollarSign, Play, Pause } from 'lucide-react';
 
 const Home = () => {
+  const [isDemoPlaying, setIsDemoPlaying] = useState(false);
   const services = [
     {
       icon: <Eye className="w-8 h-8" />,
@@ -59,14 +60,14 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/contact"
-                  className="bg-cyan-600 hover:bg-cyan-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                  className="bg-cyan-600 hover:bg-cyan-700 px-5 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
                 >
                   Get Started Today
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
                 <Link
                   to="/services"
-                  className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center"
+                  className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 px-5 py-3 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center"
                 >
                   View Services
                 </Link>
@@ -79,11 +80,11 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-gray-800 rounded-2xl p-8 shadow-2xl border border-cyan-400/20">
+              <div className="bg-gray-800 rounded-2xl p-5 shadow-xl border border-cyan-400/20 max-w-md mx-auto">
                 <div className="flex items-center mb-6">
-                  <Shield className="w-12 h-12 text-cyan-400 mr-4" />
+                  <Fingerprint className="w-10 h-10 text-cyan-400 mr-4" />
                   <div>
-                    <h3 className="text-2xl font-bold">Secure & Confidential</h3>
+                    <h3 className="text-xl font-bold">Secure & Confidential</h3>
                     <p className="text-gray-400">100% Privacy Guaranteed</p>
                   </div>
                 </div>
@@ -144,7 +145,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="text-cyan-600 mb-4">{service.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
@@ -156,10 +157,10 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link
               to="/services"
-              className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center"
+              className="bg-cyan-600 hover:bg-cyan-700 text-white px-5 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 inline-flex items-center"
             >
               View All Services
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -178,17 +179,39 @@ const Home = () => {
           <div className="max-w-4xl mx-auto">
             <div className="relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl">
               <div className="aspect-video bg-gradient-to-br from-cyan-900 to-gray-900 flex items-center justify-center">
-                <div className="text-center">
-                  <button
-                    type="button"
-                    aria-label="Play cybersecurity demo video"
-                    className="w-20 h-20 mx-auto mb-4 rounded-full bg-cyan-600 hover:bg-cyan-700 flex items-center justify-center transition-all duration-300 transform hover:scale-105"
-                  >
-                    <Play className="w-8 h-8 text-white ml-1" />
-                  </button>
-                  <h3 className="text-2xl font-bold mb-2">Cybersecurity Demo Video</h3>
-                  <p className="text-gray-300">Professional cybersecurity services demonstration</p>
-                </div>
+                {isDemoPlaying ? (
+                  <div className="relative w-full h-full overflow-hidden bg-gray-950">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.35),_transparent_45%)] animate-pulse"></div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                      <Fingerprint className="w-16 h-16 text-cyan-300 mb-4" />
+                      <h3 className="text-2xl font-bold mb-2">Cybersecurity Demo Playing</h3>
+                      <p className="text-gray-300 max-w-xl">
+                        Invisible Trace Technology protects digital assets with confidential forensic, monitoring, and recovery services.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setIsDemoPlaying(false)}
+                        className="mt-6 inline-flex items-center rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/20"
+                      >
+                        <Pause className="w-4 h-4 mr-2" />
+                        Pause Video
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      onClick={() => setIsDemoPlaying(true)}
+                      aria-label="Play cybersecurity demo video"
+                      className="w-16 h-16 mx-auto mb-4 rounded-full bg-cyan-600 hover:bg-cyan-700 flex items-center justify-center transition-all duration-300 transform hover:scale-105"
+                    >
+                      <Play className="w-7 h-7 text-white ml-1" />
+                    </button>
+                    <h3 className="text-xl font-bold mb-2">Cybersecurity Demo Video</h3>
+                    <p className="text-gray-300">Professional cybersecurity services demonstration</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -207,16 +230,11 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-white text-cyan-600 hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105"
             >
               Get Free Consultation
             </Link>
-            <a
-              href="tel:+17134281255"
-              className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
-            >
-              Call Now: (713) 428-1255
-            </a>
+
           </div>
         </div>
       </section>

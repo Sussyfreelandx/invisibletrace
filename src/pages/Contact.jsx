@@ -8,7 +8,7 @@ import {
   Send, 
   MessageSquare,
   Calendar,
-  Shield
+  Lock
 } from 'lucide-react';
 import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
 import emailjs from 'emailjs-com';
@@ -150,9 +150,9 @@ const Contact = () => {
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: "Address",
-      details: "6525 Marvin Brown St, Fort Worth, Texas 76179",
-      link: "https://maps.google.com/?q=6525+Marvin+Brown+St,+Fort+Worth,+Texas+76179"
+      title: "Location",
+      details: "United States",
+      link: null
     },
     {
       icon: <Clock className="w-6 h-6" />,
@@ -191,8 +191,8 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Get Free Consultation</h2>
+              <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-100">
+                <h2 className="text-2xl font-bold text-gray-900 mb-5">Get Free Consultation</h2>
                 
                 {submitMessage && (
                   <div className={`mb-6 p-4 rounded-lg ${
@@ -309,7 +309,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center ${
+                    className={`w-full py-3 px-4 rounded-lg font-semibold text-sm text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center ${
                       isSubmitting 
                         ? 'bg-gray-400 cursor-not-allowed' 
                         : 'bg-cyan-600 hover:bg-cyan-700 text-white'
@@ -323,7 +323,7 @@ const Contact = () => {
                     type="button"
                     onClick={handleWhatsAppSend}
                     disabled={isSubmitting}
-                    className="w-full py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    className="w-full py-3 px-4 rounded-lg font-semibold text-sm text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
                     Send via WhatsApp
                     <FaWhatsapp className="w-5 h-5 ml-2" />
@@ -337,7 +337,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-6"
             >
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
@@ -347,7 +347,7 @@ const Contact = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4">
                     <div className="text-cyan-600 mt-1">{info.icon}</div>
@@ -371,22 +371,14 @@ const Contact = () => {
               </div>
 
               {/* Quick Contact Buttons */}
-              <div className="space-y-4 pt-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Quick Contact</h3>
-                
-                <a
-                  href="tel:+17134281255"
-                  className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
-                >
-                  <Phone className="w-5 h-5 mr-3" />
-                  Call Now: (713) 428-1255
-                </a>
+              <div className="space-y-3 pt-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Quick Contact</h3>
                 
                 <a
                   href="https://wa.me/17134281255"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
                 >
                   <FaWhatsapp className="w-5 h-5 mr-3" />
                   WhatsApp Chat
@@ -396,7 +388,7 @@ const Contact = () => {
                   href={import.meta.env.VITE_TELEGRAM_CONTACT_URL || 'https://t.me/invisibletracetech'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-sky-500 hover:bg-sky-600 text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                  className="w-full bg-sky-500 hover:bg-sky-600 text-white py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
                 >
                   <FaTelegram className="w-5 h-5 mr-3" />
                   Telegram Chat
@@ -404,7 +396,7 @@ const Contact = () => {
                 
                 <a
                   href="mailto:invisibletracetech@gmail.com"
-                  className="w-full bg-gray-600 hover:bg-gray-700 text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                  className="w-full bg-gray-600 hover:bg-gray-700 text-white py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
                 >
                   <Mail className="w-5 h-5 mr-3" />
                   Send Email
@@ -414,7 +406,7 @@ const Contact = () => {
               {/* Security Notice */}
               <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-6 mt-8">
                 <div className="flex items-start space-x-3">
-                  <Shield className="w-6 h-6 text-cyan-600 mt-1" />
+                  <Lock className="w-6 h-6 text-cyan-600 mt-1" />
                   <div>
                     <h4 className="text-lg font-semibold text-cyan-900 mb-2">Security & Privacy</h4>
                     <p className="text-cyan-800 text-sm">
@@ -425,36 +417,6 @@ const Contact = () => {
                 </div>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Location</h2>
-            <p className="text-xl text-gray-600">
-              Visit our office in Fort Worth, Texas for in-person consultations
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div className="aspect-video bg-gray-200 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-700 mb-2">Interactive Map</h3>
-                <p className="text-gray-600 mb-4">6525 Marvin Brown St, Fort Worth, Texas 76179</p>
-                <a
-                  href="https://maps.google.com/?q=6525+Marvin+Brown+St,+Fort+Worth,+Texas+76179"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-                >
-                  View on Google Maps
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
