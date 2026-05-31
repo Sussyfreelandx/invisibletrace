@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Fingerprint, Eye, Lock, Search, ArrowRight, CheckCircle, DollarSign, Play, Pause } from 'lucide-react';
+import { Fingerprint, Eye, Lock, Search, ArrowRight, CheckCircle, DollarSign } from 'lucide-react';
 
 const Home = () => {
-  const [isDemoPlaying, setIsDemoPlaying] = useState(false);
   const services = [
     {
       icon: <Eye className="w-8 h-8" />,
@@ -49,7 +48,7 @@ const Home = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Invisible Trace
                 <span className="block text-cyan-400">Technology</span>
               </h1>
@@ -170,7 +169,7 @@ const Home = () => {
       <section className="py-20 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">See Our Expertise in Action</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">See Our Expertise in Action</h2>
             <p className="text-xl text-gray-300">
               Watch how we protect and recover digital assets for our clients
             </p>
@@ -178,40 +177,20 @@ const Home = () => {
           
           <div className="max-w-4xl mx-auto">
             <div className="relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl">
-              <div className="aspect-video bg-gradient-to-br from-cyan-900 to-gray-900 flex items-center justify-center">
-                {isDemoPlaying ? (
-                  <div className="relative w-full h-full overflow-hidden bg-gray-950">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.35),_transparent_45%)] animate-pulse"></div>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                      <Fingerprint className="w-16 h-16 text-cyan-300 mb-4" />
-                      <h3 className="text-2xl font-bold mb-2">Cybersecurity Demo Playing</h3>
-                      <p className="text-gray-300 max-w-xl">
-                        Invisible Trace Technology protects digital assets with confidential forensic, monitoring, and recovery services.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => setIsDemoPlaying(false)}
-                        className="mt-6 inline-flex items-center rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/20"
-                      >
-                        <Pause className="w-4 h-4 mr-2" />
-                        Pause Video
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-center">
-                    <button
-                      type="button"
-                      onClick={() => setIsDemoPlaying(true)}
-                      aria-label="Play cybersecurity demo video"
-                      className="w-16 h-16 mx-auto mb-4 rounded-full bg-cyan-600 hover:bg-cyan-700 flex items-center justify-center transition-all duration-300 transform hover:scale-105"
-                    >
-                      <Play className="w-7 h-7 text-white ml-1" />
-                    </button>
-                    <h3 className="text-xl font-bold mb-2">Cybersecurity Demo Video</h3>
-                    <p className="text-gray-300">Professional cybersecurity services demonstration</p>
-                  </div>
-                )}
+              <div className="aspect-video bg-gray-950">
+                <video
+                  className="h-full w-full object-cover"
+                  src="https://videos.pexels.com/video-files/5473806/5473806-hd_1920_1080_25fps.mp4"
+                  poster="https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                  controls
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Cybersecurity operations and technology video"
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           </div>

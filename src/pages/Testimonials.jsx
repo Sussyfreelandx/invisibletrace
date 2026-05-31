@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Star, Quote, Play, Pause, Fingerprint } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 
 const Testimonials = () => {
-  const [playingVideo, setPlayingVideo] = useState(null);
   const testimonials = [
     {
       name: "Michael Thompson",
       location: "New York, USA",
-      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "Invisible Trace Technology recovered my lost Bitcoin worth $45,000. Their expertise and professionalism exceeded all expectations. Highly recommended!",
       service: "Cryptocurrency Recovery"
@@ -17,7 +15,6 @@ const Testimonials = () => {
     {
       name: "Sarah Johnson",
       location: "Toronto, Canada",
-      image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "They helped me unlock my deceased husband's iPhone and recover precious family photos. The team was compassionate and incredibly skilled.",
       service: "Data Recovery & Device Unlock"
@@ -25,7 +22,6 @@ const Testimonials = () => {
     {
       name: "James Wilson",
       location: "Sydney, Australia",
-      image: "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "Outstanding forensic investigation services. They provided crucial evidence for our legal case with detailed documentation and expert testimony.",
       service: "Digital Forensics"
@@ -33,7 +29,6 @@ const Testimonials = () => {
     {
       name: "Emma Martinez",
       location: "London, United Kingdom",
-      image: "https://images.pexels.com/photos/3756681/pexels-photo-3756681.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "Professional phone monitoring service helped protect my teenage daughter. The discreet tracking gave me peace of mind as a concerned parent.",
       service: "Phone Monitoring"
@@ -41,7 +36,6 @@ const Testimonials = () => {
     {
       name: "Pierre Dubois",
       location: "Paris, France",
-      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "Excellent iCloud recovery service. They restored all my business data after I forgot my credentials. Fast, reliable, and completely confidential.",
       service: "iCloud Recovery"
@@ -49,7 +43,6 @@ const Testimonials = () => {
     {
       name: "Hans Mueller",
       location: "Berlin, Germany",
-      image: "https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "Their cryptocurrency recovery expertise is unmatched. They recovered funds from a scam exchange when I thought all hope was lost. Truly amazing!",
       service: "Cryptocurrency Recovery"
@@ -57,7 +50,6 @@ const Testimonials = () => {
     {
       name: "Lisa Chen",
       location: "Vancouver, Canada",
-      image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "Credit card debt solution service was life-changing. They negotiated with creditors and helped me get back on track financially. Professional and caring team.",
       service: "Financial Recovery"
@@ -65,7 +57,6 @@ const Testimonials = () => {
     {
       name: "Robert Davis",
       location: "Melbourne, Australia",
-      image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "Data recovery service saved my business. They recovered critical files from a corrupted hard drive. Their technical expertise is simply outstanding.",
       service: "Data Recovery"
@@ -73,7 +64,6 @@ const Testimonials = () => {
     {
       name: "Sophie Laurent",
       location: "Lyon, France",
-      image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
       quote: "Call tracking service helped identify harassment calls. The detailed reports provided crucial evidence for legal action. Highly professional service.",
       service: "Call Tracking"
@@ -87,6 +77,27 @@ const Testimonials = () => {
     { number: "24/7", label: "Emergency Support Available" }
   ];
 
+  const serviceVideos = [
+    {
+      title: "Digital Forensics Workflow",
+      service: "Evidence analysis and secure reporting",
+      src: "https://videos.pexels.com/video-files/5473806/5473806-hd_1920_1080_25fps.mp4",
+      poster: "https://images.pexels.com/photos/5380651/pexels-photo-5380651.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    },
+    {
+      title: "Data Recovery Process",
+      service: "Device diagnostics and file restoration",
+      src: "https://videos.pexels.com/video-files/3130284/3130284-uhd_2560_1440_30fps.mp4",
+      poster: "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    },
+    {
+      title: "Cybersecurity Monitoring",
+      service: "Live threat monitoring and response",
+      src: "https://videos.pexels.com/video-files/6963744/6963744-hd_1920_1080_25fps.mp4",
+      poster: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    }
+  ];
+
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
@@ -98,7 +109,7 @@ const Testimonials = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold mb-6">Client Success Stories</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">Client Success Stories</h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Real testimonials from satisfied clients across the globe who trusted us with their cybersecurity needs.
             </p>
@@ -130,7 +141,7 @@ const Testimonials = () => {
       <section className="py-20 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
             <p className="text-xl text-gray-600">
               Testimonials from clients across USA, Canada, Australia, Germany, France, and United Kingdom
             </p>
@@ -145,15 +156,12 @@ const Testimonials = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center mb-6">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover mr-4"
-                  />
-                  <div>
+                <div className="mb-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
                     <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
                     <p className="text-gray-600 text-sm">{testimonial.location}</p>
+                    </div>
                     <div className="flex items-center mt-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
@@ -176,22 +184,18 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Video Testimonials Section */}
+      {/* Service Videos Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Video Testimonials</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Service Videos</h2>
             <p className="text-xl text-gray-600">
-              Watch our clients share their success stories
+              Watch examples of the technology workflows behind our services
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: "Michael T.", service: "Bitcoin Recovery", location: "USA", quote: "They recovered what I thought was gone forever and kept me updated throughout the whole process." },
-              { name: "Sarah J.", service: "Data Recovery", location: "Canada", quote: "The team restored critical family data quickly, privately, and professionally." },
-              { name: "James W.", service: "Digital Forensics", location: "Australia", quote: "Their forensic report gave us the clarity and documentation we needed." }
-            ].map((video, index) => (
+            {serviceVideos.map((video, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -199,45 +203,24 @@ const Testimonials = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg"
               >
-                <div className="aspect-video bg-gradient-to-br from-cyan-900 to-gray-900 flex items-center justify-center">
-                  {playingVideo === index ? (
-                    <div className="relative w-full h-full overflow-hidden bg-gray-950 text-white">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.35),_transparent_45%)] animate-pulse"></div>
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5">
-                        <Fingerprint className="w-10 h-10 text-cyan-300 mb-3" />
-                        <h3 className="text-lg font-semibold mb-2">{video.name}</h3>
-                        <p className="text-sm text-gray-200 italic">“{video.quote}”</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="text-center text-white">
-                      <div className="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Play className="w-7 h-7 text-white ml-1" />
-                      </div>
-                      <h3 className="text-lg font-semibold mb-1">{video.name}</h3>
-                      <p className="text-sm text-gray-300">{video.service}</p>
-                      <p className="text-xs text-gray-400">{video.location}</p>
-                    </div>
-                  )}
-                </div>
-                <div className="p-4">
-                  <button
-                    type="button"
-                    onClick={() => setPlayingVideo(playingVideo === index ? null : index)}
-                    className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded-lg font-medium transition-colors inline-flex items-center justify-center"
+                <div className="aspect-video bg-gray-950">
+                  <video
+                    className="h-full w-full object-cover"
+                    src={video.src}
+                    poster={video.poster}
+                    controls
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={`${video.title} service video`}
                   >
-                    {playingVideo === index ? (
-                      <>
-                        <Pause className="w-4 h-4 mr-2" />
-                        Pause Testimonial
-                      </>
-                    ) : (
-                      <>
-                        <Play className="w-4 h-4 mr-2" />
-                        Play Testimonial
-                      </>
-                    )}
-                  </button>
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-white mb-1">{video.title}</h3>
+                  <p className="text-sm text-gray-300">{video.service}</p>
                 </div>
               </motion.div>
             ))}

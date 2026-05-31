@@ -4,8 +4,6 @@
 // These run entirely in the browser, so any configured tokens are exposed to
 // the client. Use a bot/number dedicated to receiving public contact leads.
 
-const DEFAULT_WHATSAPP_NUMBER = '17134281255';
-
 /**
  * Build a human-readable plain-text summary of a contact submission.
  * @param {{name?: string, email?: string, phone?: string, service?: string, urgency?: string, message?: string}} formData
@@ -46,6 +44,13 @@ export const isTelegramConfigured = () =>
   );
 
 /**
+ * Whether WhatsApp delivery is configured via Vite env vars.
+ * @returns {boolean}
+ */
+export const isWhatsAppConfigured = () =>
+  Boolean((import.meta.env.VITE_WHATSAPP_NUMBER || '').replace(/[^0-9]/g, ''));
+
+/**
  * Send a contact submission to a Telegram chat via the Bot API.
  * Throws if the request fails so callers can fall back to other channels.
  * @param {object} formData
@@ -80,12 +85,14 @@ export const sendTelegramMessage = async (formData) => {
 /**
  * Build a wa.me deep link that opens WhatsApp with a prefilled lead message.
  * @param {object} formData
- * @returns {string}
+ * @returns {string|null}
  */
 export const buildWhatsAppUrl = (formData) => {
-  const number = (
-    import.meta.env.VITE_WHATSAPP_NUMBER || DEFAULT_WHATSAPP_NUMBER
-  ).replace(/[^0-9]/g, '');
+  const number = (import.meta.env.VITE_WHATSAPP_NUMBER || '').replace(/[^0-9]/g, '');
+
+  if (!number) {
+    return null;
+  }
 
   return `https://wa.me/${number}?text=${encodeURIComponent(
     formatLeadMessage(formData),

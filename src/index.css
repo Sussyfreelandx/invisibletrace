@@ -5,11 +5,20 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-white font-sans text-gray-900 antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  #root {
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   * {

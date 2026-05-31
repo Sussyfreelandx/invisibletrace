@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Fingerprint, Mail, Phone, MapPin } from 'lucide-react';
+import { Fingerprint, Mail, MapPin } from 'lucide-react';
 import { FaWhatsapp, FaInstagram, FaYoutube, FaFacebook } from 'react-icons/fa';
 
 const Footer = () => {
@@ -36,9 +36,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://wa.me/17134281255"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact"
                 className="text-green-500 hover:text-green-400 transition-colors"
               >
                 <FaWhatsapp className="w-6 h-6" />
@@ -82,12 +80,6 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-cyan-400" />
-                <a href="tel:+17134281255" className="text-gray-300 hover:text-cyan-400 transition-colors">
-                  +1 (713) 428-1255
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-cyan-400" />
                 <a href="mailto:invisibletracetech@gmail.com" className="text-gray-300 hover:text-cyan-400 transition-colors">
                   invisibletracetech@gmail.com
@@ -111,16 +103,16 @@ const Footer = () => {
             {subscribed ? (
               <p className="text-cyan-400 font-medium">Thanks for subscribing!</p>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex">
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 sm:gap-0">
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-cyan-400"
+                  className="min-w-0 flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg sm:rounded-r-none focus:outline-none focus:border-cyan-400"
                 />
-                <button type="submit" className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-r-lg transition-colors">
+                <button type="submit" className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg sm:rounded-l-none transition-colors">
                   Subscribe
                 </button>
               </form>

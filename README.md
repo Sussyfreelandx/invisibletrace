@@ -39,7 +39,8 @@ environment variables (copy `.env.example` to `.env`):
   submissions to a Telegram chat via the Bot API. `VITE_TELEGRAM_CONTACT_URL`
   sets the public link for the "Telegram Chat" button.
 - **WhatsApp:** the "Send via WhatsApp" button opens a prefilled chat using
-  `VITE_WHATSAPP_NUMBER` (digits only, including country code).
+  `VITE_WHATSAPP_NUMBER` (digits only, including country code). Leave it blank
+  to hide WhatsApp contact buttons.
 
 When no Telegram/EmailJS channel is configured, the form falls back to opening a
 pre-filled email to invisibletracetech@gmail.com.
